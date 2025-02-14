@@ -1,0 +1,310 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffe6e6;
+}
+
+header {
+    background-color: #ff4d4d;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.navbar li {
+    display: inline;
+    margin: 0 2rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.navbar a:hover {
+    color: #ffe6e6;
+}
+
+main {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.section {
+    margin: 2rem 0;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+        .hero {
+            background-image: url(https://img1.picmix.com/output/stamp/normal/4/6/2/4/2354264_59fd3.gif);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .welcome-message {
+            text-align: center;
+            color: #ff4b4b;
+            margin-bottom: 2rem;
+        }
+
+     /* Envelope Section */
+.envelope-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    background: linear-gradient(135deg, #ffe6e6 0%, #ffb3b3 100%);
+    padding: 40px 20px;
+}
+
+.envelope-wrapper {
+    position: relative;
+    perspective: 1000px;
+}
+
+.envelope {
+    position: relative;
+    width: 400px;
+    height: 280px;
+    background: linear-gradient(45deg, #ff4d4d, #ff8080);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    overflow: hidden;
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    background: #ff6666;
+    transform-origin: top;
+    transition: transform 0.6s ease;
+    z-index: 3;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* Letter */
+.letter {
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    width: 80%;
+    height: auto;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.6s ease, top 0.6s ease;
+}
+
+/* Open Envelope Animation */
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .letter {
+    top: 10%;
+    transform: translateY(-20px);
+}
+
+/* Letter Content */
+.letter h3 {
+    color: #ff3366;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.letter p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.signature {
+    font-style: italic;
+    color: #ff3366;
+    margin-top: 20px;
+}
+
+.postscript {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 15px;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff3366, #ff6b6b);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+}
+.game-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffb3b3;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.card.flipped {
+    background-color: #ff4d4d;
+    color: white;
+}
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-image: url(https://img1.picmix.com/output/stamp/normal/4/6/2/4/2354264_59fd3.gif); /* Replace with your image path */
+    background-size: cover; /* Makes the image cover the entire table */
+    background-position: center; /* Centers the image */
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: rgba(245, 0, 87, 0.8); /* Semi-transparent background to allow image to show */
+    color: white;
+}
+
+td {
+    background-color: rgba(255, 128, 171, 0.8); /* Semi-transparent background */
+}
+
+tr:nth-child(even) td {
+    background-color: rgba(252, 228, 236, 0.8); /* Semi-transparent background for even rows */
+}
+.contact-section {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff5f5;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form label {
+    font-weight: bold;
+    text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background-color: #ff4b4b;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.contact-form button:hover {
+    background-color: #e03e3e;
+}
+.hidden {
+    display: none;
+}
+
+#submittedMessage {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #fff3f3;
+    border-left: 5px solid #ff4b4b;
+    border-radius: 5px;
+    text-align: left;
+}

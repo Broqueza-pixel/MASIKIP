@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#tips">Valentine's Day Tips</a></li>
+                <li><a href="#game">Game</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+ <section class="hero">
+        <h1>Celebrate Love with Us</h1>
+        <p>Welcome to your ultimate Valentine's Day destination, where romance meets creativity and joy!</p>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="welcome-message">
+            <h2>About Us</h2>
+            <p>We're passionate about making your Valentine's Day truly special. Our platform is designed to help you create unforgettable moments with your loved ones through creative ideas, heartfelt inspiration, and interactive experiences.</p>
+        </div>
+
+    
+        </div>
+    </section>
+<div class="envelope-container">
+<div class="envelope-wrapper">
+  <div class="envelope">
+    <div class="envelope-flap"></div>
+    <div class="letter">
+      <h3>🌹 A Special Valentine's Message 🌹</h3>
+      <p>Dearest Visitor,</p>
+      <p>On this day of love and affection, we invite you to embark on a journey of romance and creativity. Let us help you make this Valentine's Day unforgettable!</p>
+      <p>Whether you're celebrating with a special someone, spreading love to family and friends, or embracing self-love, we have something magical in store for you.</p>
+      <div class="signature">With warmth and love,<br>Your Valentine's Team</div>
+      <a href="#tips" class="cta-button">Discover Valentine's Magic</a>
+      <p class="postscript">P.S. Click the envelope to reveal the message! ❤️</p>
+    </div>
+  </div>
+</div>
+</div>
+<section id="game" class="game-section">
+    <h2>Love Match Memory Game</h2>
+    <p>Test your memory and match the pairs of love symbols!</p>
+    <div class="game-board" id="gameBoard"></div>
+</section>
+<!-- Gift Tips Table Section -->
+<section id="tips" class="tips-section">
+    <h2>Valentine's Day Gift Inspiration</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Gift Category</th>
+                <th>Best For</th>
+                <th>Gift Examples</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Experience-Based</td>
+                <td>Couples, Adventure Lovers</td>
+                <td>Romantic Getaway, Spa Day, Concert Tickets</td>
+            </tr>
+            <tr>
+                <td>DIY & Handmade</td>
+                <td>Sentimental Partners, Close Friends</td>
+                <td>Scrapbook of Memories, Handmade Card, Custom Playlist</td>
+            </tr>
+            <tr>
+                <td>Tech & Gadgets</td>
+                <td>Tech Enthusiasts, Long-Distance Relationships</td>
+                <td>Smartwatch, Long-Distance Touch Lamp, Customized Phone Case</td>
+            </tr>
+            <tr>
+                <td>Food & Drinks</td>
+                <td>Foodies, Coffee Lovers</td>
+                <td>Gourmet Chocolate Box, Personalized Wine, DIY Baking Kit</td>
+            </tr>
+            <tr>
+            
+        </tbody>
+    </table>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <h2>Contact Us</h2>
+  <p>We'd love to hear from you! Fill out the form below, and we'll get back to you soon.</p>
+
+  <form id="contactForm" class="contact-form">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Your Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Your Message:</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <!-- Display message after submission -->
+  <div id="submittedMessage" class="hidden"></div>
+</section>
+
+<script>
+  document.querySelector(".envelope").addEventListener("click", function() {
+    this.classList.toggle("open");
+  });
+  const symbols = ["💖", "🌹", "💌", "🍫", "❤️", "💍", "🎁", "💕"];
+let cards = [...symbols, ...symbols]; // Duplicate for matching pairs
+cards = cards.sort(() => Math.random() - 0.5);
+
+const gameBoard = document.getElementById("gameBoard");
+let flippedCards = [];
+let matchedPairs = 0;
+
+function createCard(symbol) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.dataset.symbol = symbol;
+    card.addEventListener("click", flipCard);
+    gameBoard.appendChild(card);
+}
+
+function flipCard() {
+    if (flippedCards.length < 2 && !this.classList.contains("flipped")) {
+        this.textContent = this.dataset.symbol;
+        this.classList.add("flipped");
+        flippedCards.push(this);
+
+        if (flippedCards.length === 2) {
+            setTimeout(checkMatch, 1000);
+        }
+    }
+}
+
+function checkMatch() {
+    if (flippedCards[0].dataset.symbol === flippedCards[1].dataset.symbol) {
+        flippedCards = [];
+        matchedPairs++;
+        if (matchedPairs === symbols.length) {
+            alert("Congratulations! You matched all pairs! ❤️");
+        }
+    } else {
+        flippedCards.forEach(card => {
+            card.textContent = "";
+            card.classList.remove("flipped");
+        });
+        flippedCards = [];
+    }
+}
+
+cards.forEach(createCard);
+  // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+                
+                // Update active state
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+      
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get user input values
+    const name = document.getElementById("name").value;
+    const message = document.getElementById("message").value;
+
+    // Display submitted message
+    const messageContainer = document.getElementById("submittedMessage");
+    messageContainer.innerHTML = `
+        <p><strong>${name}, your message has been submitted:</strong></p>
+        <p>"${message}"</p>
+        <p style="color: #ff4b4b;"><strong>Waiting for admin's response...</strong></p>
+    `;
+    messageContainer.classList.remove("hidden"); // Show the message container
+
+    // Reset form fields
+    document.getElementById("contactForm").reset();
+});
+
+
+</script>
+</body>
+
+</html>
